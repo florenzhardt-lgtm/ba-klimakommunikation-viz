@@ -334,6 +334,11 @@
           "height": 8,
           "sym": 3,
           "long": 6,
+          "metrics": {
+            "substanz": 8,
+            "langfrist": 6,
+            "ambition": 9.0
+          },
           "break": false,
           "moves": {
             "4a": 0,
@@ -347,6 +352,11 @@
           "height": 5,
           "sym": 5,
           "long": 4,
+          "metrics": {
+            "substanz": 5,
+            "langfrist": 4,
+            "ambition": 8.0
+          },
           "break": false,
           "moves": {
             "4a": 0,
@@ -360,6 +370,11 @@
           "height": 1,
           "sym": 2,
           "long": 3,
+          "metrics": {
+            "substanz": 1,
+            "langfrist": 3,
+            "ambition": 5.0
+          },
           "break": false,
           "moves": {
             "4a": 0,
@@ -373,6 +388,11 @@
           "height": 0,
           "sym": 4,
           "long": 4,
+          "metrics": {
+            "substanz": 0,
+            "langfrist": 4,
+            "ambition": 3.0
+          },
           "break": false,
           "moves": {
             "4a": 0,
@@ -386,6 +406,11 @@
           "height": 0,
           "sym": 2,
           "long": 3,
+          "metrics": {
+            "substanz": 0,
+            "langfrist": 3,
+            "ambition": 2.0
+          },
           "break": false,
           "moves": {
             "4a": 0,
@@ -399,6 +424,11 @@
           "height": 1,
           "sym": 2,
           "long": 4,
+          "metrics": {
+            "substanz": 1,
+            "langfrist": 4,
+            "ambition": 2.0
+          },
           "break": false,
           "moves": {
             "4a": 1,
@@ -412,6 +442,11 @@
           "height": 1,
           "sym": 4,
           "long": 3,
+          "metrics": {
+            "substanz": 1,
+            "langfrist": 3,
+            "ambition": 0.0
+          },
           "break": true,
           "moves": {
             "4a": 0,
@@ -425,6 +460,11 @@
           "height": 0,
           "sym": 3,
           "long": 5,
+          "metrics": {
+            "substanz": 0,
+            "langfrist": 5,
+            "ambition": 0.0
+          },
           "break": false,
           "moves": {
             "4a": 0,
@@ -438,6 +478,11 @@
           "height": 5,
           "sym": 3,
           "long": 7,
+          "metrics": {
+            "substanz": 5,
+            "langfrist": 7,
+            "ambition": 0.0
+          },
           "break": false,
           "moves": {
             "4a": 0,
@@ -451,6 +496,11 @@
           "height": 7,
           "sym": 2,
           "long": 11,
+          "metrics": {
+            "substanz": 7,
+            "langfrist": 11,
+            "ambition": 0.0
+          },
           "break": false,
           "moves": {
             "4a": 0,
@@ -464,6 +514,11 @@
           "height": 6,
           "sym": 2,
           "long": 10,
+          "metrics": {
+            "substanz": 6,
+            "langfrist": 10,
+            "ambition": 0.0
+          },
           "break": false,
           "moves": {
             "4a": 0,
@@ -477,6 +532,11 @@
           "height": 7,
           "sym": 3,
           "long": 13,
+          "metrics": {
+            "substanz": 7,
+            "langfrist": 13,
+            "ambition": 0.0
+          },
           "break": false,
           "moves": {
             "4a": 0,
@@ -490,6 +550,11 @@
           "height": 8,
           "sym": 1,
           "long": 9,
+          "metrics": {
+            "substanz": 8,
+            "langfrist": 9,
+            "ambition": 2.0
+          },
           "break": false,
           "moves": {
             "4a": 2,
@@ -503,6 +568,11 @@
           "height": 6,
           "sym": 2,
           "long": 10,
+          "metrics": {
+            "substanz": 6,
+            "langfrist": 10,
+            "ambition": 5.0
+          },
           "break": false,
           "moves": {
             "4a": 3,
@@ -516,6 +586,11 @@
           "height": 9,
           "sym": 3,
           "long": 11,
+          "metrics": {
+            "substanz": 9,
+            "langfrist": 11,
+            "ambition": 5.0
+          },
           "break": false,
           "moves": {
             "4a": 1,
@@ -906,6 +981,11 @@
           "height": 5,
           "sym": 3,
           "long": 8,
+          "metrics": {
+            "substanz": 5,
+            "langfrist": 8,
+            "ambition": 10.0
+          },
           "break": false,
           "moves": {
             "4a": 0,
@@ -919,6 +999,11 @@
           "height": 4,
           "sym": 3,
           "long": 8,
+          "metrics": {
+            "substanz": 4,
+            "langfrist": 8,
+            "ambition": 10.0
+          },
           "break": false,
           "moves": {
             "4a": 0,
@@ -932,6 +1017,11 @@
           "height": 10,
           "sym": 2,
           "long": 6,
+          "metrics": {
+            "substanz": 10,
+            "langfrist": 6,
+            "ambition": 11.0
+          },
           "break": false,
           "moves": {
             "4a": 1,
@@ -945,6 +1035,11 @@
           "height": 9,
           "sym": 3,
           "long": 5,
+          "metrics": {
+            "substanz": 9,
+            "langfrist": 5,
+            "ambition": 12.0
+          },
           "break": false,
           "moves": {
             "4a": 1,
@@ -958,6 +1053,11 @@
           "height": 7,
           "sym": 3,
           "long": 4,
+          "metrics": {
+            "substanz": 7,
+            "langfrist": 4,
+            "ambition": 12.0
+          },
           "break": false,
           "moves": {
             "4a": 0,
@@ -971,6 +1071,11 @@
           "height": 7,
           "sym": 3,
           "long": 6,
+          "metrics": {
+            "substanz": 7,
+            "langfrist": 6,
+            "ambition": 11.0
+          },
           "break": false,
           "moves": {
             "4a": 0,
@@ -984,6 +1089,11 @@
           "height": 4,
           "sym": 3,
           "long": 6,
+          "metrics": {
+            "substanz": 4,
+            "langfrist": 6,
+            "ambition": 12.0
+          },
           "break": false,
           "moves": {
             "4a": 1,
@@ -997,6 +1107,11 @@
           "height": 5,
           "sym": 3,
           "long": 9,
+          "metrics": {
+            "substanz": 5,
+            "langfrist": 9,
+            "ambition": 13.0
+          },
           "break": false,
           "moves": {
             "4a": 1,
@@ -1010,6 +1125,11 @@
           "height": 4,
           "sym": 4,
           "long": 6,
+          "metrics": {
+            "substanz": 4,
+            "langfrist": 6,
+            "ambition": 14.0
+          },
           "break": false,
           "moves": {
             "4a": 1,
@@ -1023,6 +1143,11 @@
           "height": 9,
           "sym": 3,
           "long": 5,
+          "metrics": {
+            "substanz": 9,
+            "langfrist": 5,
+            "ambition": 15.0
+          },
           "break": false,
           "moves": {
             "4a": 1,
@@ -1036,6 +1161,11 @@
           "height": 7,
           "sym": 3,
           "long": 7,
+          "metrics": {
+            "substanz": 7,
+            "langfrist": 7,
+            "ambition": 16.0
+          },
           "break": false,
           "moves": {
             "4a": 1,
@@ -1049,6 +1179,11 @@
           "height": 7,
           "sym": 2,
           "long": 5,
+          "metrics": {
+            "substanz": 7,
+            "langfrist": 5,
+            "ambition": 17.0
+          },
           "break": false,
           "moves": {
             "4a": 1,
@@ -1062,6 +1197,11 @@
           "height": 7,
           "sym": 3,
           "long": 5,
+          "metrics": {
+            "substanz": 7,
+            "langfrist": 5,
+            "ambition": 18.0
+          },
           "break": false,
           "moves": {
             "4a": 1,
@@ -1075,6 +1215,11 @@
           "height": 6,
           "sym": 3,
           "long": 6,
+          "metrics": {
+            "substanz": 6,
+            "langfrist": 6,
+            "ambition": 18.0
+          },
           "break": false,
           "moves": {
             "4a": 0,
@@ -1088,6 +1233,11 @@
           "height": 5,
           "sym": 3,
           "long": 4,
+          "metrics": {
+            "substanz": 5,
+            "langfrist": 4,
+            "ambition": 17.0
+          },
           "break": false,
           "moves": {
             "4a": 0,
@@ -1478,6 +1628,11 @@
           "height": 9,
           "sym": 1,
           "long": 10,
+          "metrics": {
+            "substanz": 9,
+            "langfrist": 10,
+            "ambition": 10.0
+          },
           "break": false,
           "moves": {
             "4a": 0,
@@ -1491,6 +1646,11 @@
           "height": 7,
           "sym": 2,
           "long": 11,
+          "metrics": {
+            "substanz": 7,
+            "langfrist": 11,
+            "ambition": 12.0
+          },
           "break": false,
           "moves": {
             "4a": 2,
@@ -1504,6 +1664,11 @@
           "height": 8,
           "sym": 1,
           "long": 6,
+          "metrics": {
+            "substanz": 8,
+            "langfrist": 6,
+            "ambition": 12.0
+          },
           "break": false,
           "moves": {
             "4a": 0,
@@ -1517,6 +1682,11 @@
           "height": 10,
           "sym": 0,
           "long": 7,
+          "metrics": {
+            "substanz": 10,
+            "langfrist": 7,
+            "ambition": 12.0
+          },
           "break": false,
           "moves": {
             "4a": 0,
@@ -1530,6 +1700,11 @@
           "height": 9,
           "sym": 0,
           "long": 9,
+          "metrics": {
+            "substanz": 9,
+            "langfrist": 9,
+            "ambition": 11.0
+          },
           "break": false,
           "moves": {
             "4a": 0,
@@ -1543,6 +1718,11 @@
           "height": 9,
           "sym": 0,
           "long": 7,
+          "metrics": {
+            "substanz": 9,
+            "langfrist": 7,
+            "ambition": 9.0
+          },
           "break": true,
           "moves": {
             "4a": 0,
@@ -1556,6 +1736,11 @@
           "height": 9,
           "sym": 0,
           "long": 6,
+          "metrics": {
+            "substanz": 9,
+            "langfrist": 6,
+            "ambition": 9.0
+          },
           "break": false,
           "moves": {
             "4a": 0,
@@ -1569,6 +1754,11 @@
           "height": 10,
           "sym": 1,
           "long": 6,
+          "metrics": {
+            "substanz": 10,
+            "langfrist": 6,
+            "ambition": 9.0
+          },
           "break": false,
           "moves": {
             "4a": 0,
@@ -1582,6 +1772,11 @@
           "height": 9,
           "sym": 0,
           "long": 12,
+          "metrics": {
+            "substanz": 9,
+            "langfrist": 12,
+            "ambition": 10.0
+          },
           "break": false,
           "moves": {
             "4a": 1,
@@ -1595,6 +1790,11 @@
           "height": 11,
           "sym": 0,
           "long": 8,
+          "metrics": {
+            "substanz": 11,
+            "langfrist": 8,
+            "ambition": 10.0
+          },
           "break": false,
           "moves": {
             "4a": 0,
@@ -1608,6 +1808,11 @@
           "height": 11,
           "sym": 0,
           "long": 10,
+          "metrics": {
+            "substanz": 11,
+            "langfrist": 10,
+            "ambition": 10.0
+          },
           "break": false,
           "moves": {
             "4a": 0,
@@ -1621,6 +1826,11 @@
           "height": 14,
           "sym": 0,
           "long": 11,
+          "metrics": {
+            "substanz": 14,
+            "langfrist": 11,
+            "ambition": 11.0
+          },
           "break": false,
           "moves": {
             "4a": 1,
@@ -1634,6 +1844,11 @@
           "height": 12,
           "sym": 0,
           "long": 6,
+          "metrics": {
+            "substanz": 12,
+            "langfrist": 6,
+            "ambition": 11.0
+          },
           "break": false,
           "moves": {
             "4a": 0,
@@ -1647,6 +1862,11 @@
           "height": 10,
           "sym": 0,
           "long": 12,
+          "metrics": {
+            "substanz": 10,
+            "langfrist": 12,
+            "ambition": 12.0
+          },
           "break": false,
           "moves": {
             "4a": 1,
@@ -1660,6 +1880,11 @@
           "height": 7,
           "sym": 0,
           "long": 9,
+          "metrics": {
+            "substanz": 7,
+            "langfrist": 9,
+            "ambition": 12.0
+          },
           "break": false,
           "moves": {
             "4a": 0,

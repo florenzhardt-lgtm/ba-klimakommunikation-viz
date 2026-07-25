@@ -3,21 +3,26 @@
 import { create } from "zustand";
 import { YEAR_MIN, YEAR_MAX, type CompanyId } from "./data";
 
+export type Metric = "substanz" | "langfrist" | "ambition";
+
 interface VizState {
   year: number;
   playing: boolean;
   focus: CompanyId | null; // null = alle
+  metric: Metric; // 3D-Höhe
   setYear: (y: number) => void;
   step: (d: number) => void;
   togglePlay: () => void;
   setPlaying: (p: boolean) => void;
   setFocus: (c: CompanyId | null) => void;
+  setMetric: (m: Metric) => void;
 }
 
 export const useViz = create<VizState>((set) => ({
   year: YEAR_MIN,
   playing: false,
   focus: null,
+  metric: "substanz",
   setYear: (y) => set({ year: Math.max(YEAR_MIN, Math.min(YEAR_MAX, y)) }),
   step: (d) =>
     set((s) => {
@@ -29,4 +34,5 @@ export const useViz = create<VizState>((set) => ({
   togglePlay: () => set((s) => ({ playing: !s.playing })),
   setPlaying: (p) => set({ playing: p }),
   setFocus: (c) => set({ focus: c }),
+  setMetric: (m) => set({ metric: m }),
 }));

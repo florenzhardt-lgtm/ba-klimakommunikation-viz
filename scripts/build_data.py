@@ -127,6 +127,18 @@ def main():
         if sub in SUBCODES:
             counts[comp][year][sub] += 1
 
+    # --- Ziel-Ambition: kumulierte HK4-Bewegung (4a +1 / 4c -1 / 4d -2),
+    # fortgeschrieben, global auf >= 0 offsetiert (enthält alle HK4, auch Finanzziele) ---
+    ambition_raw = {c: [] for c in COMPANIES}
+    for c in COMPANIES:
+        cum = 0.0
+        for y in YEARS:
+            cc = counts[c][y]
+            cum += cc["4a"] * 1.0 + cc["4c"] * -1.0 + cc["4d"] * -2.0
+            ambition_raw[c].append(cum)
+    amb_min = min(v for c in COMPANIES for v in ambition_raw[c])
+    ambition = {c: [round(v - amb_min, 3) for v in ambition_raw[c]] for c in COMPANIES}
+
     companies = {}
     for c in COMPANIES:
         yearly = {}
@@ -139,12 +151,17 @@ def main():
         # der Krise ein und bauen sich wieder auf." Die U-Form IST die Substanz-Kurve (3a).
         # height = 3a (substanziell); long = 1b (Langfrist-Stützkurve); break aus HK4 4d.
         traj = []
-        for y in YEARS:
+        for idx, y in enumerate(YEARS):
             cc = counts[c][y]
             traj.append({"year": y,
-                         "height": cc["3a"],          # substanzielle Segmente -> U/Treppe/Kaskade
+                         "height": cc["3a"],          # (Legacy) substanzielle Segmente
                          "sym": cc["3b"],             # symbolische Gegenkurve
                          "long": cc["1b"],            # Langfrist-Bezüge
+                         "metrics": {                 # drei umschaltbare 3D-Höhen
+                             "substanz": cc["3a"],    # inhaltlich gedeckt -> U/Treppe/Kaskade
+                             "langfrist": cc["1b"],   # Langfrist-Dominanz
+                             "ambition": ambition[c][idx],  # Ziel-Entwicklung (HK4 kumuliert)
+                         },
                          "break": cc["4d"] > 0,       # sichtbarer Bandriss (RWE 2016)
                          "moves": {"4a": cc["4a"], "4b": cc["4b"], "4c": cc["4c"], "4d": cc["4d"]}})
 

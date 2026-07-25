@@ -5,14 +5,43 @@ export type SubCode =
   | "1a" | "1b" | "2a" | "2b" | "2c" | "2d"
   | "3a" | "3b" | "4a" | "4b" | "4c" | "4d" | "5a";
 
+export type Metric = "substanz" | "langfrist" | "ambition";
+
 export interface TrajPoint {
   year: number;
   height: number;
   sym: number;
   long: number;
+  metrics: Record<Metric, number>;
   break: boolean;
   moves: { "4a": number; "4b": number; "4c": number; "4d": number };
 }
+
+export const METRICS: {
+  id: Metric;
+  label: string;
+  short: string;
+  desc: string;
+}[] = [
+  {
+    id: "substanz",
+    label: "Substanz",
+    short: "3a",
+    desc: "Höhe = substanziell kodierte Segmente je Jahr (harte Kennzahlen, Investitionen, Scope-Ziele, Governance). Zeigt, wie inhaltlich gedeckt die Klimakommunikation war — RWE als Tal, VW als Kaskade, BASF als Treppe.",
+  },
+  {
+    id: "langfrist",
+    label: "Langfrist-Dominanz",
+    short: "1b",
+    desc: "Höhe = langfristige Zeitbezüge (1b) je Jahr. Zeigt, wie präsent der lange Horizont ist — durchgängig hoch bei allen dreien, am stärksten bei BASF.",
+  },
+  {
+    id: "ambition",
+    label: "Ziel-Ambition",
+    short: "HK4",
+    desc: "Höhe = kumulierte Zielentwicklung (Präzisierung +, Abschwächung −, Streichung −−). Zeigt, wie sich die Ziele selbst entwickeln — RWE bricht 2016 ein, VW steigt, BASF hält ein Plateau. Enthält alle HK4-Bewegungen, auch BASFs Finanzziel-Rücknahme 2015.",
+  },
+];
 export interface SpectrumPoint { year: number; x: number; y: number }
 export interface EventItem {
   year: number;

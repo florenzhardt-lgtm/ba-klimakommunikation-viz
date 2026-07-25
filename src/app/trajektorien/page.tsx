@@ -2,10 +2,12 @@
 
 import dynamic from "next/dynamic";
 import { usePlayback } from "@/lib/usePlayback";
+import { useViz } from "@/lib/store";
+import { METRICS } from "@/lib/data";
 import FocusTabs from "@/components/FocusTabs";
+import MetricToggle from "@/components/MetricToggle";
 import YearScrubber from "@/components/YearScrubber";
 
-// R3F nur im Client rendern (kein SSR)
 const Scene3D = dynamic(() => import("@/components/Scene3D"), {
   ssr: false,
   loading: () => (
@@ -17,26 +19,38 @@ const Scene3D = dynamic(() => import("@/components/Scene3D"), {
 
 export default function TrajektorienPage() {
   usePlayback(1600);
+  const metric = useViz((s) => s.metric);
+  const active = METRICS.find((m) => m.id === metric)!;
+
   return (
-    <main className="h-screen flex flex-col pt-16 pb-32 px-4 sm:px-6 max-w-7xl mx-auto w-full">
-      <div className="flex flex-wrap items-end justify-between gap-4 py-3">
-        <div>
-          <h1 className="text-xl sm:text-2xl font-semibold tracking-tight">3D-Trajektorien</h1>
-          <p className="text-[13px] text-[var(--fg-dim)] mt-1 max-w-2xl">
-            Substanzielle Klimakommunikation als Relief. RWE bildet ein <span className="text-[var(--rwe)]">Tal</span> (Bruch 2016 rot),
-            VW eine flache <span className="text-[var(--vw)]">Kaskade</span>, BASF eine steigende <span className="text-[var(--basf)]">Treppe</span>.
-            Ziehen zum Drehen.
+    <main className="h-[100dvh] flex flex-col pt-16 pb-28 sm:pb-32 px-3 sm:px-6 max-w-7xl mx-auto w-full">
+      <div className="flex flex-col gap-3 py-2 sm:py-3">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <h1 className="text-lg sm:text-2xl font-semibold tracking-tight">3D-Trajektorien</h1>
+          <div className="flex flex-wrap items-center gap-2">
+            <MetricToggle />
+            <FocusTabs />
+          </div>
+        </div>
+        {/* Legende: erklärt die aktuelle Metrik */}
+        <div className="glass px-3.5 py-2.5">
+          <p className="text-[12.5px] leading-relaxed text-[var(--fg-dim)]">
+            <span className="font-semibold text-[var(--fg)]">{active.label} </span>
+            <span className="mono text-[10px] text-[var(--fg-faint)]">({active.short})</span>
+            {" — "}
+            {active.desc}
           </p>
         </div>
-        <FocusTabs />
       </div>
 
       <div className="glass flex-1 min-h-0 overflow-hidden rounded-2xl">
         <Scene3D />
       </div>
 
-      <div className="fixed bottom-4 inset-x-0 px-4 sm:px-6 z-40">
-        <div className="max-w-7xl mx-auto"><YearScrubber /></div>
+      <div className="fixed bottom-3 sm:bottom-4 inset-x-0 px-3 sm:px-6 z-40">
+        <div className="max-w-7xl mx-auto">
+          <YearScrubber />
+        </div>
       </div>
     </main>
   );
