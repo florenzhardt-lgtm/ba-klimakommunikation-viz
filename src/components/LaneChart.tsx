@@ -13,6 +13,13 @@ const LANE_H = 104;
 const LANE_GAP = 6;
 const AXIS_H = 30;
 const MAX_H = 14; // globales Maximum (BASF 2021 = 14 substanzielle Codes)
+
+// Ehrliche Kurzform der real gemessenen Substanz-Kurve (3a) je Firma
+const SHAPE: Record<string, string> = {
+  RWE: "Wanne / U",
+  VW: "schwankend",
+  BASF: "hohes Plateau",
+};
 const TOTAL_H = COMPANIES.length * LANE_H + (COMPANIES.length - 1) * LANE_GAP + AXIS_H;
 
 const xFor = (y: number) => PADL + ((y - YEAR_MIN) / (YEAR_MAX - YEAR_MIN)) * PLOT_W;
@@ -114,8 +121,11 @@ export default function LaneChart() {
               <text x={6} y={laneTop(i) + 20} fill={color(c)} fontSize={14} fontWeight={600} className="mono">
                 {c}
               </text>
-              <text x={6} y={laneTop(i) + 34} fill="var(--fg-faint)" fontSize={8.5}>
+              <text x={6} y={laneTop(i) + 33} fill="var(--fg-faint)" fontSize={8.5}>
                 Substanz
+              </text>
+              <text x={6} y={laneTop(i) + 44} fill={color(c)} fontSize={8.5} opacity={0.75} className="mono">
+                {SHAPE[c]}
               </text>
 
               <path d={area} fill={`url(#fill-${c})`} />

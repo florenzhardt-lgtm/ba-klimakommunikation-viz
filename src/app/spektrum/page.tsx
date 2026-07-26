@@ -4,6 +4,7 @@ import { usePlayback } from "@/lib/usePlayback";
 import FocusTabs from "@/components/FocusTabs";
 import Spectrum from "@/components/Spectrum";
 import YearScrubber from "@/components/YearScrubber";
+import InfoButton from "@/components/InfoButton";
 
 export default function SpektrumPage() {
   usePlayback(1200);
@@ -20,7 +21,31 @@ export default function SpektrumPage() {
             <span className="text-[var(--fg)]"> niemand wandert einsinnig zur Integration.</span>
           </p>
         </div>
-        <FocusTabs />
+        <div className="flex items-center gap-2">
+          <InfoButton title="Spektrum — warum sich die Punkte bewegen">
+            <p>
+              Jede Firma ist ein Leuchtpunkt in einem Feld mit zwei Achsen, die beide aus{" "}
+              <strong>Anteilen</strong> eines Jahres berechnet werden.
+            </p>
+            <p>
+              <strong>Waagerecht (Framing):</strong> x = (2d − 2a) ∕ (Summe HK2). Ganz links steht
+              reine <span className="text-[var(--crit)]">Polarisierung</span> (nur 2a), ganz rechts
+              reine <span className="text-[var(--basf)]">Juxtaposition</span> (nur 2d), die Mitte ist
+              ausgeglichen.
+            </p>
+            <p>
+              <strong>Senkrecht (Deckung):</strong> y = (3a − 3b) ∕ (Summe HK3). Oben substanziell
+              (3a), unten symbolisch (3b).
+            </p>
+            <p>
+              Für jedes Jahr wird die Position neu bestimmt — der Punkt wandert nach links, wenn
+              Polarisierung zunimmt, und nach oben, wenn die Substanz steigt. Die blasse Spur ist der
+              seit 2010 zurückgelegte Pfad. Jahre ohne Framing- bzw. Substanz-Codes übernehmen die
+              zuletzt gültige Position, damit der Punkt nicht springt.
+            </p>
+          </InfoButton>
+          <FocusTabs />
+        </div>
       </div>
 
       <div className="grid gap-4 lg:grid-cols-[1fr_320px] items-start">

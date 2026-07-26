@@ -7,6 +7,7 @@ import { METRICS } from "@/lib/data";
 import FocusTabs from "@/components/FocusTabs";
 import MetricToggle from "@/components/MetricToggle";
 import YearScrubber from "@/components/YearScrubber";
+import InfoButton from "@/components/InfoButton";
 
 const Scene3D = dynamic(() => import("@/components/Scene3D"), {
   ssr: false,
@@ -29,6 +30,35 @@ export default function TrajektorienPage() {
           <h1 className="text-lg sm:text-2xl font-semibold tracking-tight">3D-Trajektorien</h1>
           <div className="flex flex-wrap items-center gap-2">
             <MetricToggle />
+            <InfoButton title="3D-Trajektorien — wie die Höhen entstehen">
+              <p>
+                Dieselben Jahresverläufe als Höhenrelief. Die <strong>Höhenachse</strong> ist je
+                nach gewählter Lesart anders definiert — daraus ergibt sich, wann ein Band steigt
+                oder fällt:
+              </p>
+              <ul className="space-y-2 list-disc pl-4">
+                <li>
+                  <strong>Substanz:</strong> Höhe = Anzahl substanziell gedeckter Segmente (3a) je
+                  Jahr — wie beim Zeitstrahl. RWE als Tal, VW schwankend, BASF durchgehend hoch.
+                </li>
+                <li>
+                  <strong>Langfrist-Dominanz:</strong> Höhe = Anzahl langfristiger Zeitbezüge (1b) je
+                  Jahr — je höher, desto präsenter der lange Horizont.
+                </li>
+                <li>
+                  <strong>Ziel-Ambition:</strong> Höhe = fortlaufend aufsummierte Zielbewegung, ab
+                  2010: <strong>+1</strong> je Präzisierung (4a), <strong>−1</strong> je Abschwächung
+                  (4c), <strong>−2</strong> je Streichung (4d). Steigt, solange Ziele geschärft
+                  werden, knickt bei Rücknahme ein. Hier zeigt sich VWs steigende{" "}
+                  <em>Kaskade</em> (10→18) und RWEs Einbruch 2016. Zur Vergleichbarkeit ist die
+                  Kurvenschar auf einen gemeinsamen Nullpunkt verschoben.
+                </li>
+              </ul>
+              <p>
+                Ein <span className="text-[var(--crit)]">roter Punkt</span> markiert ein Jahr mit
+                vollständiger Zielstreichung (4d) — im ganzen Korpus nur RWE 2016.
+              </p>
+            </InfoButton>
             <FocusTabs />
           </div>
         </div>
