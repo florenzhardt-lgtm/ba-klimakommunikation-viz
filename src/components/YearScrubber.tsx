@@ -1,6 +1,6 @@
 "use client";
 
-import { Pause, Play } from "lucide-react";
+import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useViz } from "@/lib/store";
 import { YEAR_MIN, YEAR_MAX, YEARS, crisisFor } from "@/lib/data";
@@ -11,17 +11,40 @@ export default function YearScrubber({ compact = false }: { compact?: boolean })
   const togglePlay = useViz((s) => s.togglePlay);
   const setYear = useViz((s) => s.setYear);
   const setPlaying = useViz((s) => s.setPlaying);
+  const step = useViz((s) => s.step);
   const crisis = crisisFor(year);
+
+  // Manuelles Jahr-Weiterschalten: pausiert das Auto-Abspielen, springt ±1 Jahr.
+  const stepYear = (d: number) => {
+    setPlaying(false);
+    step(d);
+  };
 
   return (
     <div className={`glass px-4 py-3 ${compact ? "rounded-2xl" : "rounded-2xl"}`}>
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-2 sm:gap-3">
+        <button
+          onClick={() => stepYear(-1)}
+          aria-label="Vorheriges Jahr"
+          className="shrink-0 grid place-items-center h-9 w-9 rounded-full border border-[var(--border-hi)] text-[var(--fg-dim)] hover:text-[var(--fg)] hover:border-white/40 active:scale-90 transition"
+        >
+          <ChevronLeft size={18} />
+        </button>
+
         <button
           onClick={togglePlay}
           aria-label={playing ? "Pause" : "Abspielen"}
           className="shrink-0 grid place-items-center h-10 w-10 rounded-full bg-white text-[var(--bg)] hover:scale-105 active:scale-95 transition-transform"
         >
           {playing ? <Pause size={17} fill="currentColor" /> : <Play size={17} fill="currentColor" className="ml-0.5" />}
+        </button>
+
+        <button
+          onClick={() => stepYear(1)}
+          aria-label="Nächstes Jahr"
+          className="shrink-0 grid place-items-center h-9 w-9 rounded-full border border-[var(--border-hi)] text-[var(--fg-dim)] hover:text-[var(--fg)] hover:border-white/40 active:scale-90 transition"
+        >
+          <ChevronRight size={18} />
         </button>
 
         <div className="flex flex-col leading-none">
