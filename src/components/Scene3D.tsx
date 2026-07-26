@@ -67,19 +67,22 @@ function Ribbon({ c, i }: { c: CompanyId; i: number }) {
 
   const curY = knots.find((_, idx) => traj[idx].year === year)!;
 
+  // Einzelauswahl: nicht gewählte Firmen fallen vollständig weg
+  if (dim) return null;
+
   return (
     <group>
       <mesh geometry={geom}>
         <meshBasicMaterial
           vertexColors
           transparent
-          opacity={dim ? 0.1 : 0.5}
+          opacity={0.5}
           side={THREE.DoubleSide}
           depthWrite={false}
         />
       </mesh>
 
-      <Line points={dense} color={col} lineWidth={dim ? 1 : 3} transparent opacity={dim ? 0.25 : 1} />
+      <Line points={dense} color={col} lineWidth={3} transparent opacity={1} />
 
       {/* Jahres-Sphären */}
       {traj.map((p, idx) => {
@@ -92,27 +95,23 @@ function Ribbon({ c, i }: { c: CompanyId; i: number }) {
             <meshBasicMaterial
               color={p.break ? "#ef4444" : active ? "#ffffff" : col}
               transparent
-              opacity={dim ? 0.15 : 1}
+              opacity={1}
             />
           </mesh>
         );
       })}
 
       {/* aktueller Punkt: Halo */}
-      {!dim && (
-        <mesh position={[curY.x, curY.y, curY.z]}>
-          <sphereGeometry args={[0.4, 20, 20]} />
-          <meshBasicMaterial color={col} transparent opacity={0.18} />
-        </mesh>
-      )}
+      <mesh position={[curY.x, curY.y, curY.z]}>
+        <sphereGeometry args={[0.4, 20, 20]} />
+        <meshBasicMaterial color={col} transparent opacity={0.18} />
+      </mesh>
 
-      {!dim && (
-        <Html position={[xFor(YEAR_MIN) - 1.5, 0.25, z]} center distanceFactor={17}>
-          <div style={{ color: col, fontWeight: 600, fontSize: 13, whiteSpace: "nowrap" }} className="mono">
-            {c}
-          </div>
-        </Html>
-      )}
+      <Html position={[xFor(YEAR_MIN) - 1.5, 0.25, z]} center distanceFactor={17}>
+        <div style={{ color: col, fontWeight: 600, fontSize: 13, whiteSpace: "nowrap" }} className="mono">
+          {c}
+        </div>
+      </Html>
     </group>
   );
 }

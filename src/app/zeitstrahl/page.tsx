@@ -3,8 +3,9 @@
 import { useEffect, useState } from "react";
 import { useViz } from "@/lib/store";
 import { usePlayback } from "@/lib/usePlayback";
-import { crisisFor } from "@/lib/data";
+import { crisisFor, METRICS } from "@/lib/data";
 import FocusTabs from "@/components/FocusTabs";
+import MetricToggle from "@/components/MetricToggle";
 import LaneChart from "@/components/LaneChart";
 import EventCards from "@/components/EventCards";
 import LiveStats from "@/components/LiveStats";
@@ -14,6 +15,8 @@ import InfoButton from "@/components/InfoButton";
 export default function ZeitstrahlPage() {
   usePlayback(1600);
   const year = useViz((s) => s.year);
+  const metric = useViz((s) => s.metric);
+  const active = METRICS.find((m) => m.id === metric)!;
   const [shaking, setShaking] = useState(false);
 
   useEffect(() => {
@@ -30,12 +33,14 @@ export default function ZeitstrahlPage() {
         <div>
           <h1 className="text-xl sm:text-2xl font-semibold tracking-tight">Zeitstrahl der drei Architekturen</h1>
           <p className="text-[13px] text-[var(--fg-dim)] mt-1 max-w-xl">
-            Höhe = substanziell gedeckte Klimaaussagen je Jahr (Code 3a). RWE bricht in der
-            Streichungsphase ein und erholt sich (Wanne/U-Form), VW schwankt auf mittlerem Niveau,
-            BASF bleibt durchgehend am dichtesten gedeckt. Bahn anklicken zum Fokussieren.
+            <span className="font-semibold text-[var(--fg)]">{active.label}</span>{" "}
+            <span className="mono text-[10px] text-[var(--fg-faint)]">({active.short})</span>
+            {" — "}Höhe jeder Kurve je Jahr. Oben rechts die Lesart wechseln (Substanz,
+            Langfrist-Dominanz, Ziel-Ambition). Bahn anklicken zum Fokussieren.
           </p>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
+          <MetricToggle />
           <InfoButton title="Zeitstrahl — wie die Kurven entstehen">
             <p>
               Die <strong>Höhe jeder Kurve</strong> ist die Anzahl der in diesem Jahr{" "}

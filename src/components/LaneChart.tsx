@@ -1,9 +1,11 @@
 "use client";
 
+import { useMemo } from "react";
 import { useViz } from "@/lib/store";
 import {
-  COMPANIES, YEARS, YEAR_MIN, YEAR_MAX, color, data, crisisFor, type CompanyId,
+  COMPANIES, YEARS, YEAR_MIN, YEAR_MAX, color, data, crisisFor, METRICS, type CompanyId,
 } from "@/lib/data";
+import type { Metric } from "@/lib/store";
 
 const W = 1000;
 const PADL = 46;
@@ -12,7 +14,6 @@ const PLOT_W = W - PADL - PADR;
 const LANE_H = 104;
 const LANE_GAP = 6;
 const AXIS_H = 30;
-const MAX_H = 14; // globales Maximum (BASF 2021 = 14 substanzielle Codes)
 
 // Ehrliche Kurzform der real gemessenen Substanz-Kurve (3a) je Firma
 const SHAPE: Record<string, string> = {
@@ -24,8 +25,8 @@ const TOTAL_H = COMPANIES.length * LANE_H + (COMPANIES.length - 1) * LANE_GAP + 
 
 const xFor = (y: number) => PADL + ((y - YEAR_MIN) / (YEAR_MAX - YEAR_MIN)) * PLOT_W;
 const laneTop = (i: number) => i * (LANE_H + LANE_GAP);
-const yFor = (i: number, h: number) =>
-  laneTop(i) + LANE_H - 16 - (h / MAX_H) * (LANE_H - 30);
+const yForMax = (i: number, h: number, max: number) =>
+  laneTop(i) + LANE_H - 16 - (h / max) * (LANE_H - 30);
 
 function smoothPath(pts: { x: number; y: number }[]) {
   if (pts.length < 2) return "";
@@ -47,9 +48,23 @@ function smoothPath(pts: { x: number; y: number }[]) {
 export default function LaneChart() {
   const year = useViz((s) => s.year);
   const focus = useViz((s) => s.focus);
+  const metric = useViz((s) => s.metric);
   const setYear = useViz((s) => s.setYear);
   const setPlaying = useViz((s) => s.setPlaying);
   const setFocus = useViz((s) => s.setFocus);
+
+  const active = METRICS.find((m) => m.id === metric)!;
+  const val = (p: { metrics: Record<Metric, number> }) => p.metrics[metric];
+
+  // Globales Maximum der aktiven Metrik (dynamische Y-Skala pro Lesart)
+  const maxH = useMemo(() => {
+    let max = 0;
+    for (const c of COMPANIES)
+      for (const p of data.companies[c].trajectory)
+        max = Math.max(max, p.metrics[metric]);
+    return max || 1;
+  }, [metric]);
+  const yFor = (i: number, h: number) => yForMax(i, h, maxH);
 
   const px = xFor(year);
 
@@ -102,7 +117,7 @@ export default function LaneChart() {
         {/* Lanes */}
         {COMPANIES.map((c, i) => {
           const traj = data.companies[c].trajectory;
-          const pts = traj.map((p) => ({ x: xFor(p.year), y: yFor(i, p.height) }));
+          const pts = traj.map((p) => ({ x: xFor(p.year), y: yFor(i, val(p)) }));
           const line = smoothPath(pts);
           const area = `${line} L ${pts[pts.length - 1].x} ${yFor(i, 0)} L ${pts[0].x} ${yFor(i, 0)} Z`;
           const dim = focus && focus !== c;
@@ -122,11 +137,13 @@ export default function LaneChart() {
                 {c}
               </text>
               <text x={6} y={laneTop(i) + 33} fill="var(--fg-faint)" fontSize={8.5}>
-                Substanz
+                {active.label}
               </text>
-              <text x={6} y={laneTop(i) + 44} fill={color(c)} fontSize={8.5} opacity={0.75} className="mono">
-                {SHAPE[c]}
-              </text>
+              {metric === "substanz" && (
+                <text x={6} y={laneTop(i) + 44} fill={color(c)} fontSize={8.5} opacity={0.75} className="mono">
+                  {SHAPE[c]}
+                </text>
+              )}
 
               <path d={area} fill={`url(#fill-${c})`} />
               <path d={line} fill="none" stroke={color(c)} strokeWidth={2.4} strokeLinecap="round" />
@@ -136,7 +153,7 @@ export default function LaneChart() {
                 evYears.has(p.year) ? (
                   <circle
                     key={p.year}
-                    cx={xFor(p.year)} cy={yFor(i, p.height)} r={p.break ? 5 : 3.4}
+                    cx={xFor(p.year)} cy={yFor(i, val(p))} r={p.break ? 5 : 3.4}
                     fill={p.break ? "var(--crit)" : color(c)}
                     stroke="var(--bg)" strokeWidth={1.5}
                   />
@@ -144,16 +161,16 @@ export default function LaneChart() {
               )}
               {/* Bruch-Marker (RWE 2016 = Zielstreichung) */}
               {traj.filter((p) => p.break).map((p) => (
-                <text key={`b-${p.year}`} x={xFor(p.year)} y={yFor(i, p.height) - 9}
+                <text key={`b-${p.year}`} x={xFor(p.year)} y={yFor(i, val(p)) - 9}
                   fill="var(--crit)" fontSize={11} textAnchor="middle" fontWeight={700}>×</text>
               ))}
 
               {/* aktueller Knoten */}
-              <circle cx={px} cy={yFor(i, cur.height)} r={7} fill="none" stroke={color(c)} strokeWidth={1.5} opacity={0.5}>
+              <circle cx={px} cy={yFor(i, val(cur))} r={7} fill="none" stroke={color(c)} strokeWidth={1.5} opacity={0.5}>
                 <animate attributeName="r" values="7;11;7" dur="1.8s" repeatCount="indefinite" />
                 <animate attributeName="opacity" values="0.5;0;0.5" dur="1.8s" repeatCount="indefinite" />
               </circle>
-              <circle cx={px} cy={yFor(i, cur.height)} r={4.5} fill={color(c)} stroke="var(--bg)" strokeWidth={1.5} />
+              <circle cx={px} cy={yFor(i, val(cur))} r={4.5} fill={color(c)} stroke="var(--bg)" strokeWidth={1.5} />
             </g>
           );
         })}

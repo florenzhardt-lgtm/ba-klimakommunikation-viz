@@ -36,13 +36,14 @@ export default function Spectrum() {
         <text x={MID + 8} y={S - PAD - 6} fill="var(--fg-dim)" fontSize={12}>▼ symbolisch</text>
 
         {COMPANIES.map((c) => {
-          const dim = focus && focus !== c;
+          // Einzelauswahl: nicht gewählte Firmen fallen vollständig weg
+          if (focus && focus !== c) return null;
           const sp = data.companies[c].spectrum.filter((p) => p.year <= year);
           if (sp.length === 0) return null;
           const trail = sp.map((p) => `${px(p.x)},${py(p.y)}`).join(" ");
           const head = sp[sp.length - 1];
           return (
-            <g key={c} opacity={dim ? 0.15 : 1} style={{ transition: "opacity 0.4s", cursor: "pointer" }}
+            <g key={c} style={{ cursor: "pointer" }}
                onClick={() => setFocus(focus === c ? null : c)}>
               <polyline points={trail} fill="none" stroke={color(c)} strokeWidth={2} strokeOpacity={0.4}
                 strokeLinejoin="round" strokeLinecap="round" />

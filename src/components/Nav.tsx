@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 const TABS = [
   { href: "/", label: "Übersicht", short: "Start" },
   { href: "/zeitstrahl", label: "Zeitstrahl", short: "Zeit" },
-  { href: "/trajektorien", label: "3D-Trajektorien", short: "3D" },
+  { href: "/trajektorien", label: "Trajektorien", short: "3D/2D" },
   { href: "/spektrum", label: "Spektrum", short: "Spektr." },
 ];
 
