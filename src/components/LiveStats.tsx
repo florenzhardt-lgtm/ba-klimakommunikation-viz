@@ -11,9 +11,10 @@ function Split({ c, year }: { c: CompanyId; year: number }) {
   const longPct = (cc["1b"] / total) * 100;
   return (
     <div>
-      <div className="flex items-center justify-between text-[11px] text-[var(--fg-dim)] mb-1">
-        <span className="mono">{cc["1a"]} kurzfristig</span>
-        <span className="mono">langfristig {cc["1b"]}</span>
+      {/* Labels stehen jeweils über ihrem eigenen Balkenteil: links farbig = Langfrist, rechts rot = Kurzfrist */}
+      <div className="flex items-center justify-between text-[11px] mb-1">
+        <span className="mono" style={{ color: color(c) }}>langfristig {cc["1b"]}</span>
+        <span className="mono" style={{ color: "var(--crit)" }}>{cc["1a"]} kurzfristig</span>
       </div>
       <div className="h-2 rounded-full overflow-hidden flex" style={{ background: "rgba(239,68,68,0.35)" }}>
         <motion.div
@@ -100,8 +101,8 @@ export default function LiveStats() {
         </div>
       ))}
       <p className="text-[10.5px] text-[var(--fg-faint)] pt-1 leading-relaxed">
-        Farbe = Langfrist-Anteil (1b), rot = Kurzfrist (1a). Die Langfrist überwiegt fast
-        durchgängig — <span className="italic">das Ob ist entschieden</span>.
+        Links farbig = Langfrist-Anteil (1b), rechts rot = Kurzfrist (1a). Die Langfrist
+        überwiegt fast durchgängig — <span className="italic">das Ob ist entschieden</span>.
       </p>
     </div>
   );
