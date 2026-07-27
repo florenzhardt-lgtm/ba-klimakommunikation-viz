@@ -9,7 +9,7 @@ const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"]
 const SITE = "https://ba-klimakommunikation-viz.vercel.app";
 const TITLE = "Getrennt wird im Wie — Klimakommunikation RWE · VW · BASF (2010–2024)";
 const DESC =
-  "Interaktive Visualisierung der empirischen Befunde einer Bachelorarbeit zu Short-Termism und Klimakommunikation (RWE, Volkswagen, BASF, 2010–2024, 1.509 Kodierungen).";
+  "Interaktive Visualisierung der empirischen Befunde einer Bachelorarbeit zu Short-Termism und Klimakommunikation (RWE, Volkswagen, BASF, 2010–2024, 1.508 Kodierungen).";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),

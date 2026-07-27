@@ -52,7 +52,7 @@ export default function Home() {
           RWE, Volkswagen und BASF kommunizieren langfristige Klimaziele durchgängig —
           aber sie handhaben die Spannung zwischen kurz- und langfristiger Orientierung in
           drei grundverschiedenen Architekturen. Diese Anwendung macht{" "}
-          <span className="text-[var(--fg)] mono">1.509</span> Kodierungen aus{" "}
+          <span className="text-[var(--fg)] mono">1.508</span> Kodierungen aus{" "}
           <span className="text-[var(--fg)] mono">45</span> Geschäftsberichten
           (2010–2024) erlebbar.
         </motion.p>

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 Baut public/data.json aus der autoritativen Kodierung der Bachelorarbeit.
-Quelle: /Users/florenz/Documents/Bachelorarbeit/Korpus/_kodierung.csv (1509 Segmente).
+Quelle: /Users/florenz/Documents/Bachelorarbeit/Korpus/_kodierung.csv (1508 Segmente).
 Nur Lesen der BA-Ordner. Aggregiert Code-Counts pro Firma x Jahr, leitet
 Trajektorie (3D) + Spektrum-Koordinaten ab und merged kuratierte Hero-Events.
 """
@@ -206,7 +206,7 @@ def main():
               f"1a={t['1a']} 1b={t['1b']}")
     grand = sum(companies[c]["total"] for c in COMPANIES)
     pol = sum(companies[c]["totals"]["2a"] for c in COMPANIES)
-    print(f"  GESAMT={grand} (erwartet 1509)  Polarisierung 2a={pol} (erwartet 90)")
+    print(f"  GESAMT={grand} (erwartet 1508)  Polarisierung 2a={pol} (erwartet 90)")
 
 
 if __name__ == "__main__":
