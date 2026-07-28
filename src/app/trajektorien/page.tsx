@@ -61,7 +61,8 @@ export default function TrajektorienPage() {
               </ul>
               <p>
                 Ein <span className="text-[var(--crit)]">roter Punkt</span> markiert ein Jahr mit
-                vollständiger Zielstreichung (4d) — im ganzen Korpus nur RWE 2016.
+                vollständiger Zielstreichung (4d): RWE 2016 — die einzige Streichung eines
+                Klimaziels im Korpus — und BASF 2015, wo ein Finanzziel entfiel.
               </p>
             </InfoButton>
             <FocusTabs />
